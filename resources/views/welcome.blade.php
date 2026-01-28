@@ -1,56 +1,50 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.base')
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+@section('title', 'Benvenuto - '.config('app.name', 'MyBudget'))
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+@section('body')
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ url('/') }}">MyBudget</a>
 
-        <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @endif
-    </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
-
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
-        </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-
+            <div class="ms-auto">
+                @auth
+                    <a href="{{ route('dashboard') }}" class="btn btn-outline-light btn-sm">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-outline-light btn-sm me-2">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btn btn-warning btn-sm">Registrati</a>
+                    @endif
+                @endauth
+            </div>
         </div>
+    </nav>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
-    </body>
-</html>
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="p-4 p-md-5 bg-white border rounded-3 shadow-sm">
+                    <h1 class="display-6 fw-bold mb-3">Tieni traccia dei soldi, senza complicarti la vita.</h1>
+                    <p class="lead text-muted mb-4">
+                        Inserisci le spese in pochi secondi e capisci dove finiscono i tuoi soldi.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        @auth
+                            <a href="{{ route('dashboard') }}" class="btn btn-dark">Vai alla Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-dark">Accedi</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="btn btn-outline-secondary">Crea account</a>
+                            @endif
+                        @endauth
+                    </div>
+                </div>
+
+                <p class="text-center text-muted small mt-4 mb-0">
+                    © {{ now()->year }} MyBudget
+                </p>
+            </div>
+        </div>
+    </main>
+@endsection
