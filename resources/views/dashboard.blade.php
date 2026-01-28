@@ -1,5 +1,5 @@
-<x-app-layout>
-    <div class="container mt-4">
-        <livewire:dashboard />
-    </div>
-</x-app-layout>
+@extends('layouts.app')
+
+@section('content')
+    <livewire:dashboard />
+@endsection
