@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
         <a class="navbar-brand fw-bold" href="{{ route('dashboard') }}">MyBudget</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
@@ -45,6 +44,5 @@
                 </ul>
             @endauth
         </div>
-    </div>
 </nav>
 
