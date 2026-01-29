@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+    --app-bg: #eef2f7;
+    --app-ink: #0f172a;
+    --app-muted: #64748b;
+    --app-accent: #0ea5a4;
+    --app-accent-2: #f59e0b;
+    --app-card: #ffffff;
+    --app-border: #e2e8f0;
+}
+
+.app-body {
+    font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+    color: var(--app-ink);
+    background: radial-gradient(1200px 600px at 10% 0%, #dbeafe 0%, transparent 60%),
+                radial-gradient(900px 500px at 90% 10%, #fef3c7 0%, transparent 55%),
+                var(--app-bg);
+    min-height: 100vh;
+}
+
+.app-body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(14, 165, 164, 0.08), rgba(245, 158, 11, 0.08));
+    pointer-events: none;
+    z-index: 0;
+}
+
+.app-body > * {
+    position: relative;
+    z-index: 1;
+}
+
+.app-container {
+    max-width: 1500px;
+}
+
+.app-dashboard-container {
+    max-width: 1680px;
+    margin: 0 auto;
+}
+
+.app-navbar {
+    background: rgba(15, 23, 42, 0.88);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.app-navbar .navbar-brand {
+    color: #e2e8f0;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.app-navbar .nav-link {
+    color: rgba(226, 232, 240, 0.8);
+    font-weight: 500;
+}
+
+.app-navbar .nav-link.active,
+.app-navbar .nav-link:hover {
+    color: #ffffff;
+}
+
+.app-navbar .dropdown-menu {
+    border-radius: 14px;
+    border: 1px solid var(--app-border);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+.app-card {
+    border: 1px solid var(--app-border);
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.app-summary-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.app-summary-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--app-accent), var(--app-accent-2));
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border-color: var(--app-border);
+    padding: 0.6rem 0.75rem;
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--app-accent);
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 164, 0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(120deg, var(--app-accent), #22d3ee);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 12px 24px rgba(14, 165, 164, 0.25);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.02);
+    transform: translateY(-1px);
+}
+
+.btn-outline-danger {
+    border-radius: 10px;
+}
+
+.table {
+    border-color: var(--app-border);
+}
+
+.table thead th {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--app-muted);
+}
+
+.modal-content {
+    border-radius: 16px;
+    border: 1px solid var(--app-border);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+}
+
+.badge.text-bg-success {
+    background: rgba(14, 165, 164, 0.15) !important;
+    color: #0f766e !important;
+    font-weight: 600;
+}
+.transaction-row {
+    transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.transaction-row-enter-start {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+.transaction-row-enter-end {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.transaction-row-leave-start {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.transaction-row-leave-end {
+    opacity: 0;
+    transform: translateY(-6px);
+}
+.app-dashboard .card {
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.app-dashboard .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+}
+
+.app-sparkline {
+    background: rgba(14, 165, 164, 0.08);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+}
+
+.metric-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -30% -40% -30%;
+    height: 120px;
+    background: radial-gradient(circle, rgba(14, 165, 164, 0.2), transparent 70%);
+    opacity: 0.6;
+}
+
+.metric-value {
+    animation: metric-pop 520ms ease-out;
+}
+
+@keyframes metric-pop {
+    0% {
+        opacity: 0.2;
+        transform: translateY(6px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.table tbody tr {
+    transition: background-color 160ms ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(15, 23, 42, 0.03);
+}
+.app-tag-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    border: 1px solid var(--app-border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+}
+
+.app-tag-check .form-check-input {
+    margin-top: 0;
+}
+
+.badge.text-bg-primary {
+    background: rgba(59, 130, 246, 0.18) !important;
+    color: #1d4ed8 !important;
+    font-weight: 600;
+}
+
+.badge.text-bg-secondary {
+    background: rgba(15, 23, 42, 0.12) !important;
+    color: #1f2937 !important;
+    font-weight: 600;
+}
+.app-category-chip,
+.app-subcategory-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--app-border);
+    background: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.app-category-chip i,
+.app-subcategory-chip i,
+.app-category-dot i {
+    color: var(--chip-color, var(--app-accent));
+}
+
+.app-category-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--app-border);
+}
+
+.app-category-dot i {
+    font-size: 0.75rem;
+}
+
+.app-tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: var(--app-accent);
+    color: #ffffff;
+    font-size: 0.85rem;
+}
+
+.app-tag-chip .btn-close {
+    filter: invert(1);
+    opacity: 0.7;
+}

@@ -1,3 +1,0 @@
-<div class="alert alert-success">
-    Dashboard Livewire classico OK ✅
-</div>

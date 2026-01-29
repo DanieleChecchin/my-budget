@@ -1,5 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
-        <a class="navbar-brand fw-bold" href="{{ route('dashboard') }}">MyBudget</a>
+<nav class="navbar navbar-expand-lg app-navbar px-4 px-lg-5">
+        <a class="navbar-brand fw-bold" href="#">
+            MyBudget
+        </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -14,11 +16,14 @@
                     </a>
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ request()->routeIs('transactions.*') ? 'active' : '' }}"
+                       href="{{ route('transactions.index') }}">
                         Transazioni
                     </a>
                 </li>
+
             </ul>
 
             @auth

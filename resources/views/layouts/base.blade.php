@@ -11,9 +11,10 @@
 
     @stack('head')
 </head>
-<body>
+<body class="app-body">
 @yield('body')
 
 @livewireScripts
+@stack('scripts')
 </body>
 </html>

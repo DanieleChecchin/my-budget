@@ -3,7 +3,7 @@
 @section('body')
     @include('layouts.header')
 
-    <main class="container py-4">
+    <main class="container app-container py-4">
         @yield('content')
     </main>
 @endsection
