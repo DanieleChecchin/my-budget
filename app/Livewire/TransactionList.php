@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Transaction;
 use App\Repositories\TransactionRepository;
-use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -23,10 +22,13 @@ class TransactionList extends Component
     public ?int $deleteId = null;
 
     protected string $paginationTheme = 'bootstrap';
+    protected bool $suppressMonthSync = false;
 
     public function mount(): void
     {
-        $this->month = now()->format('Y-m');
+        if (empty($this->month)) {
+            $this->month = now()->format('Y-m');
+        }
     }
 
     private function categoryMeta(): array
@@ -57,6 +59,10 @@ class TransactionList extends Component
 
     public function updatedMonth(): void
     {
+        if ($this->suppressMonthSync) {
+            return;
+        }
+
         $this->resetPage();
     }
 
@@ -73,8 +79,10 @@ class TransactionList extends Component
     #[On('transaction-created')]
     public function refresh(): void
     {
-        // render() verrà rieseguito mantenendo filtri/pagina attuali
+        // render() verra rieseguito mantenendo filtri/pagina attuali
     }
+
+    // Month is provided by the parent dashboard component.
 
     public function confirmDelete(int $transactionId): void
     {

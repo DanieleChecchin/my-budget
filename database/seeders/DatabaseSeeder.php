@@ -47,8 +47,8 @@ class DatabaseSeeder extends Seeder
 
         $tags = [
             'casa',
-            'lavoro',
-            'rimborsi',
+            'benzina',
+            'medicine',
             'spesa-fissa',
             'urgente',
         ];

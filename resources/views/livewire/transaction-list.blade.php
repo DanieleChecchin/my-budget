@@ -11,11 +11,6 @@
 
             <div class="row g-2 align-items-end mb-3">
                 <div class="col-12 col-md-2">
-                    <label class="form-label">Mese</label>
-                    <input type="month" class="form-control" wire:model="month">
-                </div>
-
-                <div class="col-12 col-md-2">
                     <label class="form-label">Tipo</label>
                     <select class="form-select" wire:model="type">
                         <option value="all">Tutti</option>
@@ -85,12 +80,6 @@
                         @foreach ($transactions as $t)
                             <tr
                                 wire:key="tx-{{ $t->id }}"
-                                wire:transition.enter="transaction-row"
-                                wire:transition.enter-start="transaction-row-enter-start"
-                                wire:transition.enter-end="transaction-row-enter-end"
-                                wire:transition.leave="transaction-row"
-                                wire:transition.leave-start="transaction-row-leave-start"
-                                wire:transition.leave-end="transaction-row-leave-end"
                             >
                                 <td>{{ $t->date->format('d/m/Y') }}</td>
                                 <td>

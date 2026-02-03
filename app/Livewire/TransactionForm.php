@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Livewire\TransactionList;
-use App\Livewire\TransactionSummary;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Transaction;
@@ -149,7 +148,6 @@ class TransactionForm extends Component
 
         // refresh lista e riepilogo
         $this->dispatch('transaction-created')->to(TransactionList::class);
-        $this->dispatch('transaction-created')->to(TransactionSummary::class);
 
         session()->flash('status', 'Transazione salvata');
     }
